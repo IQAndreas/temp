@@ -1,0 +1,97 @@
+{% raw %}
+<style>
+	.floating-menu {
+		width:150px;
+		z-index:100;
+		padding: 15px;
+		margin: 10px;
+	
+		/* Wikipedia style * 
+		border:1px solid #AAAAAA;
+		/**/
+		
+		/* "Pop-out" style */
+		background: #FFFFFF;
+		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+		/**/
+	}
+	.floating-menu.float-left 
+	{
+		float: left;
+		margin-right: 30px;
+	}
+	.floating-menu.float-right 
+	{
+		float: right;
+		margin-left: 30px;
+	}
+	.floating-menu.position-fixed 
+	{
+		position:fixed;
+	}
+	.floating-menu.relative-left
+	{
+		float: left;
+		position:relative;
+		margin: 0px;
+		left: -215px;
+	}
+	.floating-menu.relative-right
+	{
+		float: right;
+		position:relative;
+		margin: 0px;
+		right: -215px;
+	}
+	.floating-menu.absolute-left
+	{
+		float: left;
+		position:absolute;
+		margin: 0px;
+		left: -215px;
+	}
+	.floating-menu.absolute-right
+	{
+		float: right;
+		position:absolute;
+		margin: 0px;
+		right: -215px;
+	}
+	
+	.floating-menu h3 {
+		font-size: 18px;
+		text-align: center;
+		margin: 0px;
+	}
+	.floating-menu ul, .floating-menu ol, .floating-menu menu {
+		margin: 0px;
+		padding: 0px;
+	}
+	.floating-menu li {
+		font-size: 14px;
+		padding-left: 0px;
+	}
+	#toggle-style {
+		display: block;
+		text-align: center;
+		font-size: 10px;
+	}
+	
+	
+	/*.floating-menu a, .floating-menu h3 {display:block;margin:0 0.5em;}*/
+</style>
+<nav id="menu" class="floating-menu">
+	<h3>Contents</h3>
+	<span id="toggle-style">[<a href="javascript:toggle();">Toggle menu style</a>]<br/>
+	current: <span id="current-menu-style">none</span></span>
+    <ol>
+        <li><a href="#about">About</a></li>
+        <li><a href="#usage">Usage</a></li>
+        <li><a href="#enterprise">Enterprise Users</a></li>
+        <li><a href="#result">Result</a></li>
+        <li><a href="#templates">Templates</a></li>
+        <li><a href="#examples">Examples</a></li>
+    </ol>
+</nav>
+<script src="toggle-menu.js"></script>
+{% endraw %}
