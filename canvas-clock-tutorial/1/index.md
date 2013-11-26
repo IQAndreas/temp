@@ -15,7 +15,7 @@ If you want to get the current time in JavaScript, call `new Date()`. Edit your 
 
 ```javascript
 var now = new Date();
-document.getElementById("currentTime").innerHTML = now.toString();
+document.querySelector("#current-time").innerHTML = now.toString();
 ```
 
 ![Result of date's `toString` function](the-result-of-date-tostring.png)
@@ -35,7 +35,7 @@ Since all those values are numbers, although it may not always be required, we r
 
 ```javascript
 var timeString = String(h) + ":" + String(m) + ":" + String(s);
-document.getElementById("currentTime").innerHTML = timeString;
+document.querySelector("#current-time").innerHTML = timeString;
 ```
 
 ![Displaying the current time, still doesn't look perfect](displaying-the-current-time-flawed.png)
@@ -48,14 +48,11 @@ Well it works, but it looks a bit "funny". First (if you ignore the hour part) y
 We'll add a function which adds a zero to the beginning of the number if needed:
 
 ```javascript
-function formatMinute()
-{
-	if (m < 10) {%comment%}nope/>{%endcomment%}
-	{
+function formatMinute() {
+	if (m < 10) { {%comment%}nope/>{%endcomment%}
 		return "0" + String(m);
 	}
-	else
-	{
+	else {
 		return String(m);
 	}
 }
@@ -74,14 +71,11 @@ Success!
 All we need to do is add a similar function for our seconds. We could just copy and paste `formatMinute()`, and change all the parts that say `m` to `s`, but instead, it's better if we write _one_ function which both of them can use.
 
 ```javascript
-function padZero(num)
-{
-	if (num < 10) {%comment%}nope/>{%endcomment%}
-	{
+function padZero(num) {
+	if (num < 10) { {%comment%}nope/>{%endcomment%}
 		return "0" + String(num);
 	}
-	else
-	{
+	else {
 		return String(num);
 	}
 }
@@ -104,8 +98,7 @@ If you are a country that does not use the 24-hour clock (_cough, cough, America
 We'll write a function which converts the hour to the 12-hour time. First, we will use the [modulus operator]({{ todo }}) to make sure the hour is a value between `0` and `11`. But since there is no `0th` hour in the 12-hour clock, we make sure that value never shows by changing it to `12` instead.
 
 ```javascript
-function formatHour(h)
-{
+function formatHour(h) {
 	var hour = h % 12;
 	if (hour == 0) { hour = 12 }
 	return String(hour)
@@ -117,8 +110,7 @@ Also, we still need a way to tell whether to use AM or PM. The way it's set up i
 [hour12.js]: https://gist.github.com/IQAndreas/7505384
 
 ```javascript
-function getTimePeriod(h)
-{
+function getTimePeriod(h) {
 	return (h < 12) ? "AM" : "PM"; {%comment%}nope/>{%endcomment%}
 }
 ```
@@ -127,7 +119,7 @@ When we put it all together:
 
 ```javascript
 var timeString = formatHour(h) + ":" + padZero(m) + ":" + padZero(s) + " " + getTimePeriod(h);
-document.getElementById("currentTime").innerHTML = timeString;
+document.querySelector("#current-time").innerHTML = timeString;
 ```
 
 Tadaaa!

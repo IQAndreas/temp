@@ -7,11 +7,11 @@ part: 0
 {% include js url="clock-final.js" %}
 {% include css url="clock-final.css" %}
 
-Today we will be making a classic analog clock using the canvas features of HTML5 (bonus points if you listen to any [appropriately][music1] [themed][music2] [music][music3] while making it). _NOTE: Is the music suggestion a bit too much? If not, I still need one more song._
+Today we will be making a classic analog clock using the canvas features of HTML5 (bonus points if you listen to any [appropriately][music1] [themed][music2] [music][music3] while making it).
 
 [music1]: http://www.youtube.com/watch?v=d020hcWA_Wg  "Clocks by Coldplay"
 [music2]: http://www.youtube.com/watch?v=LWTLUmUjo8A  "Time by Pink Floyd"
-[music3]: {{ todo }}  "TODO"
+[music3]: http://www.youtube.com/watch?v=xGytDsqkQY8  "Closing Time by Semisonic"
 
 <div class="tutorial-example">
 	<canvas class="clock" id="tutorial-example-clock" width="200" height="200">
@@ -19,21 +19,12 @@ Today we will be making a classic analog clock using the canvas features of HTML
 	</canvas>
 </div>
 
-_NOTE: I'll probably remove this "You will learn" list, I just figured it might be a way for readers to skip ahead in the tutorial if they already know the first topics, yet it may prove more difficult following along if you don't start from the beginning._
-
-You will learn:
-
- * How to use the `Date` class
- * How to format time the way you want it
- * How to draw angled lines on the canvas
- * How to use the `setInterval()` function
- * How to draw text to the canvas
 
 ## The Setup
 
-If you want to follow along at home, [download the empty template as a ZIP]({{ page.download_url }}).
+If you want to follow along at home, [download the empty template as a ZIP]({{ download_url }}).
 
-> **Do you know Git?** If you use Git, you can instead follow along by [forking this project on GitHub]({{ page.github_url }}) and starting in the `empty-project` branch.
+> **Do you know Git?** If you use Git, you can instead follow along by [forking this project on GitHub]({{ github_url }}) and starting in the `empty-project` branch.
 
 If you downloaded the template, you can [skip to the next step]({{ next_url }}). Or if you prefer to write the files yourself, stick around.
 
@@ -43,7 +34,7 @@ If you downloaded the template, you can [skip to the next step]({{ next_url }}).
 First we need some HTML. The only HTML we will be using will look like this:
 
 ```html
-<div id="currentTime">12:00:00 AM</div>
+<div id="current-time">12:00:00 AM</div>
 <canvas id="clock" width="200" height="200">
     If you can see this message, your browser does not support canvas, and needs an upate. Sorry. :(
 </canvas>
@@ -54,7 +45,7 @@ First we need some HTML. The only HTML we will be using will look like this:
 Next, we need to make our existing elements look a bit fancier with some CSS:
 
 ```css
-#currentTime {
+#current-time {
     display: block;
     font-weight: bold;
     text-align: center;
@@ -72,10 +63,9 @@ And finally, some JavaScript to make it all start moving!
 
 ```javascript
 document.addEventListener('DOMContentLoaded', displayTime);
-function displayTime()
-{
+function displayTime() {
 	// Just to test if the JavaScript gets loaded in properly. You can remove this later!
-	document.getElementById("currentTime").innerHTML = "JavaScript is working, now get to coding!";
+	document.querySelector("#current-time").innerHTML = "JavaScript is working, now get to coding!";
 }
 ```
 

@@ -10,7 +10,7 @@ part: 2
 Here is where the fun begins! Remember that `<canvas>` element that has been waiting for us so patiently? It's a bit difficult to see where on the page it is, so let's "bring it forward" by moving our outline from the digital clock to our canvas.
 
 ```css
-#currentTime {
+#current-time {
     display: block;
     font-weight: bold;
     text-align: center;
@@ -38,7 +38,7 @@ First we will make a red line from the center of the clock to the right (3 o'clo
 ```javascript
 // --- Analog clock ---//
 
-var canvas = document.getElementById("clock");
+var canvas = document.querySelector("#clock");
 var context = canvas.getContext("2d");
 
 // You can change this to make the clock as big or small as you want.
@@ -136,8 +136,7 @@ Now, we could just copy and paste the code for displaying the `hour` hand, but e
 // Make sure TAU is defined (it's not by default)
 Math.TAU = 2 * Math.PI;
 
-function drawArm(progress)
-{
+function drawArm(progress) {
 	var armRadians = (Math.TAU * progress) - (Math.TAU/4);
 	var armLength = clockRadius;
 	
@@ -174,8 +173,7 @@ Well, we can see the arms, but they all look the same. Let's add some more param
 // Make sure TAU is defined (it's not by default)
 Math.TAU = 2 * Math.PI;
 
-function drawArm(progress, armThickness, armLength, armColor)
-{
+function drawArm(progress, armThickness, armLength, armColor) {
 	var armRadians = (Math.TAU * progress) - (Math.TAU/4);
 	var targetX = clockX + Math.cos(armRadians) * (armLength * clockRadius);
 	var targetY = clockY + Math.sin(armRadians) * (armLength * clockRadius);
@@ -197,9 +195,9 @@ Now you can customize your arms to your heart's content! _Extra credit: try sett
 I wanted to stay as true to the "classic" clock look, so these are the colors and sizes that I chose:
 
 ```javascript
-drawArm( h/12, 10, 1/2, '#000000'); // Hour
-drawArm( m/60,  4, 3/4, '#000000'); // Minute
-drawArm( s/60,  2,   1, '#FF0000'); // Second
+drawArm(h / 12, 10, 0.50, '#000000'); // Hour
+drawArm(m / 60,  4, 0.75, '#000000'); // Minute
+drawArm(s / 60,  2, 1.00, '#FF0000'); // Second
 ```
 
 <div class="tutorial-example">

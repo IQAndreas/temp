@@ -19,13 +19,13 @@ For now, let's temporarily hide our analog clock and first make sure we can get 
 
 ```javascript
 var timeString = formatHour(h) + ":" + padZero(m) + ":" + padZero(s) + " " + getTimePeriod(h);
-document.getElementById("currentTime").innerHTML = timeString;
+document.querySelector("#current-time").innerHTML = timeString;
 
 return; // exit early
 
 // --- Analog clock ---//
 
-var canvas = document.getElementById("clock");
+var canvas = document.querySelector("#clock");
 var context = canvas.getContext("2d");
 ```
 
@@ -38,8 +38,7 @@ Let's look at the first part of our code (the very beginning, which tells us to 
 
 ```javascript
 document.addEventListener('DOMContentLoaded', displayTime);
-function displayTime()
-{
+function displayTime() {
 	var now = new Date();
 	var h = now.getHours();
 	var m = now.getMinutes();
@@ -54,11 +53,9 @@ You may say, "let's just put it in a loop":
 
 ```javascript
 document.addEventListener('DOMContentLoaded', displayTime);
-function displayTime()
-{
+function displayTime() {
 	// Loop forever and ever and ever as fast as you can
-	do
-	{
+	do {
 		var now = new Date();
 		var h = now.getHours();
 		var m = now.getMinutes();
@@ -103,15 +100,12 @@ If you want to stop `setInterval` from running, you need to keep track of the va
 ```javascript
 var stopID = setInterval(checkEmail, 5000);
 
-function checkEmail()
-{
-	if (haveNewEmail)
-	{
+function checkEmail() {
+	if (haveNewEmail) {
 		// Stop checking our email
 		clearInterval(stopID);
 	}
-	else
-	{
+	else {
 		console.log("No new mail yet. I will check again in 5 seconds.")
 		// Just let `setInterval()` keep checking again and again until there is new mail
 	}
@@ -124,8 +118,7 @@ Let's look back at our original code.
 
 ```javascript
 document.addEventListener('DOMContentLoaded', displayTime);
-function displayTime()
-{
+function displayTime() {
 	var now = new Date();
 	var h = now.getHours();
 	var m = now.getMinutes();
@@ -138,13 +131,11 @@ Instead of showing the clock when the page loads, let's start the timer. The tim
 
 ```javascript
 document.addEventListener('DOMContentLoaded', startTimer);
-function startTimer()
-{
+function startTimer() {
 	setInterval(updateClock, 1000);
 }
 
-function updateClock()
-{
+function updateClock() {
 	var now = new Date();
 	var h = now.getHours();
 	var m = now.getMinutes();
@@ -165,8 +156,7 @@ We won't be needing `clearInterval` since we don't want the clock to ever stop t
 Well, almost perfect. If you have a quick eye, you can see how it takes a moment (`1000 milliseconds` exactly, in fact) after our page has loaded before our clock actually starts; before then, it just displays that "dummy text" of `12:00:00 AM`. Instead of waiting `1000 ms` until `setInterval` runs our function for the first time, we want to run it immediately at least once:
 
 ```javascript
-function startTimer()
-{
+function startTimer() {
 	setInterval(updateClock, 1000);
 	updateClock();
 }
@@ -179,13 +169,13 @@ Now that our digital clock is working just fine, let's re-enable our analog cloc
 
 ```javascript
 var timeString = formatHour(h) + ":" + padZero(m) + ":" + padZero(s) + " " + getTimePeriod(h);
-document.getElementById("currentTime").innerHTML = timeString;
+document.querySelector("#current-time").innerHTML = timeString;
 
 return; // <-- remove this line {%comment%}/>{%endcomment%}
 
 // --- Analog clock ---//
 
-var canvas = document.getElementById("clock");
+var canvas = document.querySelector("#clock");
 var context = canvas.getContext("2d");
 ```
 
@@ -207,9 +197,9 @@ If we add that line to the end of the our current function, it will draw everyth
 
 ```javascript
 context.clearRect(0, 0, canvas.width, canvas.height);
-drawArm( h/12, 10, 1/2, '#000000'); // Hour
-drawArm( m/60,  4, 3/4, '#000000'); // Minute
-drawArm( s/60,  2,   1, '#FF0000'); // Second
+drawArm(h / 12, 10, 0.50, '#000000'); // Hour
+drawArm(m / 60,  4, 0.75, '#000000'); // Minute
+drawArm(s / 60,  2, 1.00, '#FF0000'); // Second
 ```
 
 <div class="tutorial-example">
