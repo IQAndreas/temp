@@ -4,12 +4,12 @@
 
 name: Andreas Renberg (IQAndreas)
 author: Andreas Renberg (IQAndreas)
-url: 'http://static.iqandreas.com'
+url: 'http://www.iqandreas.com/temp'
 
-title: "GitHub Pages Jekyll Template"
-subtitle: "Avoiding repeated code across all my GitHub Pages"
+title: "Tempoary tests ongoing"
+subtitle: "Nothing to see here. Move along."
 
-github_url: https://github.com/IQAndreas/gh-pages-template
+github_url: https://github.com/IQAndreas/temp
 github_username: IQAndreas
 
 #copyright_message: &copy;&nbsp;2013 by Andreas&nbsp;Renberg
@@ -40,8 +40,8 @@ global_fonts:       http://static.iqandreas.com/assets/fonts
 google_analytics_id:   UA-44446017-1
 google_analytics_name: iqandreas.com
 
-source_title_prefix: "GitHub: IQAndreas/gh-pages-template"
-source_url: 'https://github.com/IQAndreas/gh-pages-template/tree/gh-pages'
+source_title_prefix: "GitHub: IQAndreas/temp"
+source_url: 'https://github.com/IQAndreas/temp'
 
 # ----------------------- #
 #     Jekyll Configs      #
@@ -51,7 +51,7 @@ source_url: 'https://github.com/IQAndreas/gh-pages-template/tree/gh-pages'
 destination: _public
 plugins: 	 _plugins
 
-exclude: [LICENSE.md, update.sh, init-docs.sh]
+exclude: [LICENSE.md]
 
 relative_permalinks: false
 markdown: redcarpet
