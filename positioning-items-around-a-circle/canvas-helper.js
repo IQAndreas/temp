@@ -1,6 +1,6 @@
 
 
-var notEmpty = /\S/
+/*var notEmpty = /\S/
 
 window.addEventListener('load', checkForCanvasElements);
 function checkForCanvasElements() {
@@ -16,7 +16,7 @@ function checkForCanvasElements() {
 function isCanvasSupported(){
   var elem = document.createElement('canvas');
   return !!(elem.getContext && elem.getContext('2d'));
-}
+}*/
 
 
 Math.TAU = Math.PI * 2;
@@ -27,11 +27,9 @@ CanvasRenderingContext2D.prototype.drawRotatedImage = function(image, x, y, widt
     if (angle === undefined)   { angle = 0; }
     if (originX === undefined) { originX = 0; }
     if (originY === undefined) { originY = 0; }
+    
     var cos = Math.cos(angle);
     var sin = Math.sin(angle);
-    
-    console.log(originX, originY);
-    
     this.setTransform(cos, sin, -sin, cos, x+originX, y+originY);
     this.drawImage(image, -originX, -originY, width, height);
     this.resetTransform();
@@ -42,10 +40,22 @@ CanvasRenderingContext2D.prototype.resetTransform = function() {
 }
 
 CanvasRenderingContext2D.prototype.drawCircle = function (x, y, radius) {
-	context.beginPath();
-	context.arc(x, y, radius, 0, Math.TAU);
-	context.fill();
+	this.beginPath();
+	this.arc(x, y, radius, 0, Math.TAU);
+	this.fill();
 }
+
+// May not work if canvas is transformed in some way. Further testing needed.
+CanvasRenderingContext2D.prototype.clear = function () {
+	this.clearRect(0, 0, this.getWidth(), this.getHeight());
+}
+CanvasRenderingContext2D.prototype.getWidth = function () {
+	return this.canvas.width;
+}
+CanvasRenderingContext2D.prototype.getHeight = function () {
+	return this.canvas.height;
+}
+
 
 function ImageAsset(src, width, height) {
 	//Image.call(this, width, height);
