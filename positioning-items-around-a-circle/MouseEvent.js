@@ -18,17 +18,21 @@ MouseEvent.trackMouse = function(target, onUpdate) {
 	
 	target.addEventListener(MouseEvent.MOUSE_DOWN, function(event) {
 		mouseData.mouseDown = true;
-		if (onUpdate) { onUpdate.call(target, mouseData); }
+		update(event);
 	});
 	target.addEventListener(MouseEvent.MOUSE_MOVE, function(event) {
-		mouseData.mouseX = event.clientX;
-		mouseData.mouseY = event.clientY;
-		if (onUpdate) { onUpdate.call(target, mouseData); }
+		update(event);
 	});
 	target.addEventListener(MouseEvent.MOUSE_UP, function(event) {
 		mouseData.mouseDown = false;
-		if (onUpdate) { onUpdate.call(target, mouseData); }
+		update(event);
 	});
+	
+	function update(event) {
+		mouseData.mouseX = event.clientX;
+		mouseData.mouseY = event.clientY;
+		if (onUpdate) { onUpdate.call(target, mouseData); }
+	}
 	
 	return mouseData;
 }
